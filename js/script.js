@@ -31,12 +31,14 @@
   
     /* [DONE] get 'href' attribute from the clicked link */
     const elementAttribute = clickedElement.getAttribute("href");            //deklaracja stałej, która ma zwracać wartość atrybutu #href dla klikniętego linka
-                                                                             //alert(elementAttribute);
-    console.log('#href of clicked element is:', elementAttribute);           
+                                                                             //alert(elementAttribute); wyświetla komunikat o treści 'elementAttribute'
+    console.log('#href of clicked element is:', elementAttribute); 
+    
 
     /* find the correct article using the selector (value of 'href' attribute) */
-  
+    
     /* add class 'active' to the correct article */
+    
   }
   
   const links = document.querySelectorAll('.titles a');
