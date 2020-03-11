@@ -36,7 +36,7 @@
     
 
     /* find the correct article using the selector (value of 'href' attribute) */
-    const attributeReplace = elementAttribute.replace('#article', 'article'); //deklaracja stałej, która zamienia ciąg znaków na inny zadeklarowany ciąg znaków (usunięcie '#' przed article)
+    const attributeReplace = elementAttribute.replace('#', ''); //deklaracja stałej, która zamienia ciąg znaków na inny zadeklarowany ciąg znaków (usunięcie '#' przed article)
     
     /* add class 'active' to the correct article */
     document.getElementById(attributeReplace).classList.add('active');        //wywołanie funkcji, która ustawi class='active' dla klikniętego elementu
