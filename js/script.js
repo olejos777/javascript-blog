@@ -7,30 +7,33 @@
 
   const titleClickHandler = function(event){
     
-    const clickedElement = this;
-    console.log('Link was clicked!');
+    event.preventDefault();                                                  //blokuje zmienianie się adresu po klikaniu w poszczególne linki
+    const clickedElement = this;                                             //deklaracja stałej, która zwraca informację nt. klikniętego elementu (dzięki zastosowaniu 'this')
+    console.log('Link was clicked!');                                        //wyświetlenie komunikatu w console.log po kliknięciu w link
+    
   
     /* [DONE] remove class 'active' from all article links  */
-    const activeLinks = document.querySelectorAll('.titles a.active');
-
-    for(let activeLink of activeLinks){
+    const activeLinks = document.querySelectorAll('.titles a.active');       //deklaracja stałej, która ma zwracać wszystkie określone selektory (w tym wypadku wszystkie aktywne linki wewnątrz div'a z klasą .titles)
+    for(let activeLink of activeLinks){                                      //wywołanie funkcji, która usuwa wszystkie aktywne linki poprzez usunięcie klasy 'active' (z listy zwróconej przez 'const activeLinks')
     activeLink.classList.remove('active');
     }
   
-    /* [IN PROGRESS] add class 'active' to the clicked link */
-      // console.log('clickedElement (with plus): ' + clickedElement); //wyświetla adres strony + klasę/href klikniętego linka
-    clickedElement.classList.add('active')
-    console.log('clickedElement:', clickedElement);
+    /* [DONE] add class 'active' to the clicked link */
+    // console.log('clickedElement (with plus): ' + clickedElement);         //wyświetla adres strony + klasę/href klikniętego linka
+    clickedElement.classList.add('active')                                   //wywołanie funkcji, która dodaje aktywny link porzez dodanie klasy 'active' do klikniętego elementu (dzięki zastosowaniu obiekutu 'this')
+    console.log('clickedElement:', clickedElement);  
   
     /* [DONE] remove class 'active' from all articles */
-    const activeArticles = document.querySelectorAll('.post.active');
-
+    const activeArticles = document.querySelectorAll('.post.active');        //deklaracja stałej, która ma zwracać wszystkie określone selektory (w tym wypadku wszystkie aktywne artykuły wewnątrz div'a z klasą .post)
     for(let activeArticle of activeArticles){
     activeArticle.classList.remove('active');
     }
   
-    /* get 'href' attribute from the clicked link */
-  
+    /* [DONE] get 'href' attribute from the clicked link */
+    const elementAttribute = clickedElement.getAttribute("href");            //deklaracja stałej, która ma zwracać wartość atrybutu #href dla klikniętego linka
+                                                                             //alert(elementAttribute);
+    console.log('#href of clicked element is:', elementAttribute);           
+
     /* find the correct article using the selector (value of 'href' attribute) */
   
     /* add class 'active' to the correct article */
