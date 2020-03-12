@@ -30,20 +30,26 @@
     }
   
     /* [DONE] get 'href' attribute from the clicked link */
-    const elementAttribute = clickedElement.getAttribute("href");            //deklaracja stałej, która ma zwracać wartość atrybutu #href dla klikniętego linka
-                                                                             //alert(elementAttribute); wyświetla komunikat o treści 'elementAttribute'
-    console.log('#href of clicked element is:', elementAttribute); 
+    const articleSelector = clickedElement.getAttribute("href");             //deklaracja stałej, która ma zwracać wartość atrybutu #href dla klikniętego linka
+                                                                             //alert(articleSelector); wyświetla komunikat o treści 'elementAttribute'
+    console.log('#href of clicked element is:', articleSelector); 
     
 
-    /* find the correct article using the selector (value of 'href' attribute) */
-    const attributeReplace = elementAttribute.replace('#', ''); //deklaracja stałej, która zamienia ciąg znaków na inny zadeklarowany ciąg znaków (usunięcie '#' przed article)
+    /* [DONE] find the correct article using the selector (value of 'href' attribute) */
+    const articleTarget = articleSelector.replace('#', '');                  //deklaracja stałej, która zamienia ciąg znaków na inny zadeklarowany ciąg znaków (usunięcie '#' przed article)
     
-    /* add class 'active' to the correct article */
-    document.getElementById(attributeReplace).classList.add('active');        //wywołanie funkcji, która ustawi class='active' dla klikniętego elementu
+    /* [DONE] add class 'active' to the correct article */
+    document.getElementById(articleTarget).classList.add('active');          //wywołanie funkcji, która ustawi class='active' dla klikniętego elementu
   }
   
   const links = document.querySelectorAll('.titles a');
-  
+  console.log('links:', links);
+
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+
+
+const clearLinks = document.querySelector('.titles');                        //deklaracja stałej, która wybiera ul z klasą 'titles'
+ clearLinks.innerHTML = "";                                                  //wywołanie funkcji, która usuwa listę z taga 'ul' z klasą 'titles'
+
