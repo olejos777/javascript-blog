@@ -41,51 +41,56 @@ const titleClickHandler = function(event) {
   document.getElementById(articleTarget).classList.add('active');          //wywołanie funkcji, która ustawi class='active' dla klikniętego elementu
 }
 
-const links = document.querySelectorAll('.titles a');
-console.log('links:', links);
-
-for (let link of links) {
-  link.addEventListener('click', titleClickHandler);
-}
-
-const articleSelector = 'post',
-  optArticleSelector = '.post',
+const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optSectionSelector = '.posts';
-
+  optTitleListSelector = '.titles';
+  
 function generateTitleLinks() {
   /* [DONE] remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector);           //deklaracja stałej, która wybiera 'ul' z klasą 'titles'
+  const titleList = document.querySelector(optTitleListSelector);           //deklaracja stałej, która zwraca 'ul' z klasą 'titles'
   titleList.innerHTML = "";                                                 //wywołanie funkcji, która usuwa listę z taga 'ul' z klasą 'titles'
 
-  /* [IN PROGRESS] for each article */
-  const articles = document.querySelectorAll(optArticleSelector);           //deklaracja stałej, która wybiera wszystkie selectory spełniające warunek 'optArticleSelector'
+  let html = '';
+
+  /* [DONE] for each article */
+  const articles = document.querySelectorAll(optArticleSelector);           //deklaracja stałej, która zwraca wszystkie selectory spełniające warunek 'optArticleSelector'
   for (let article of articles) {                                           //wywołanie pętli, która zwraca informacje dla pojedyńczych artykułów z listy artykułów zwróconej przez 'articles'
     //console.log('szczegóły artykułu: ', article);
-
-    /* find the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    
+    /* [DONE] find the title element */
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML; //deklaracja stałej, która zwraca wszystkie tytuły (string/innerHTML z tagów o klasie .'post-title')
     console.log('Tytuł artykułu: ', articleTitle);
 
-    /* get the article id */
-    const articleId = article.getAttribute("id");
+    /* [DONE] get the article id */
+    const articleId = article.getAttribute("id");                           //deklaracja stałej, która zwraca wszystkie ID dla wszystkich tagów article (na podstawie 'cosnt articles')
     console.log('Article ID to: ', articleId);
     
-    /* create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    /* [DONE] create HTML of the link */
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';     //deklaracja stałej, która zwraca ciąg znaków  
     //console.log (linkHTML);
 
-    /* insert link into titleList */
-    titleList.innerHTML = titleList.innerHTML + linkHTML;
-    console.log (titleList.innerHTML);
+    /* [DONE] insert link into titleList */
+    //titleList.innerHTML = titleList.innerHTML + linkHTML;                 //deklaracja stałej, która 'wrzuca' ciąg znaków z powyższej stałej do 'innerHTML' stałej titleList
+    //console.log (titleList.innerHTML);
 
+    //function insertHTML() {
+      //const putHTML = document.querySelector(optTitleListSelector);         //deklaracja stałej, która zwraca 'ul' z klasą 'titles'
+      //putHTML.insertAdjacentHTML("beforeend", linkHTML);                    //funkcja, która dodajekod HTML do wybranego elementu
+      //console.log (putHTML);
+    html = html + linkHTML;
+    //console.log(html);
+    }
+    titleList.innerHTML = html;
+    
+    //insertHTML();
+  //}
+    
+    const links = document.querySelectorAll('.titles a');
+    console.log('links:', links);
+
+    for (let link of links) {
+    link.addEventListener('click', titleClickHandler);
   }
-  
- 
-  
-  
-
 }
 
 generateTitleLinks();
