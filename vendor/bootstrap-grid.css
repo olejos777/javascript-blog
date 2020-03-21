@@ -106,12 +106,14 @@ html {
   -ms-flex: 0 0 8.333333%;
   flex: 0 0 8.333333%;
   max-width: 8.333333%;
+  background-color: grey;
 }
 
 .col-2 {
   -ms-flex: 0 0 16.666667%;
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
+  background-color: white;
 }
 
 .col-3 {

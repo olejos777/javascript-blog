@@ -4,6 +4,9 @@
 
 $color-light: #fff;
 $color-dark: #444;
+$color-primary: green;
+$color-secondary: rgb(33, 155, 33);
+$color-border: darkgreen;
 
 $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
@@ -16,7 +19,10 @@ $font-text: 'Source Sans Pro', sans-serif;
 }
 
 body {
-  background: $color-light;
+  background-image: url("https://www.digitaltveurope.com/files/2020/03/Euro-2020.png");
+  background-repeat: no-repeat;
+  background-size: 100% 150%;
+  background-attachment: fixed;
   font-family: $font-text;
   color: $color-dark;
   font-weight: 300;
@@ -27,6 +33,7 @@ body {
 .container {
   max-width: 1140px;
   margin: 0 auto;
+  
 }
 
 .section-title {
@@ -34,6 +41,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+  
   span {
     text-transform: none;
     font-weight: 400;
@@ -54,14 +62,19 @@ body {
 
 .posts {
   flex: 2 0 0;
+  background-color: $color-secondary;
 }
 
 .sidebar, .posts {
-  background: $color-light;
   margin-right: 10px;
   padding: 40px;
   border: 1px solid $color-dark;
   border-radius: 5px;
+  background-color: $color-secondary;
+}
+
+.article-list {
+  background: rgb(33, 155, 33);
 }
 
 /* Logo */
@@ -80,8 +93,34 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   .active {
     font-weight: bold;
+  }
+}
+
+.btn {
+  width: 200px;
+  background-color: $color-primary;
+  border: 1px solid $color-border;
+  border-radius: 5%;
+  margin: 10px auto 10px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+    
+  a {
+    color: $color-light;
+    font-weight: bold;
+  }
+}
+
+.btn:hover {
+  background-color: $color-light;
+  border: 1px solid $color-border;
+  
+  a {
+    color: $color-border;
   }
 }
 
@@ -103,18 +142,86 @@ body {
 
 .post {
   display: none;
+  background-color: $color-secondary;
+  
   &.active {
     display: block;
   }
 }
 
-.post-author {
+.schedule {
+  border: 2px solid blue;
+  background-color: $color-light;
+}
+
+.game-location {
   font-style: italic;
+}
+
+.team-name {
+  color: $color-light;
+}
+
+.picture {
+  width: 210px;
+  height: 140px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .post-tags {
   display: flex;
+  
   p {
     margin: 0 10px 0 0;
   }
+}
+
+/* Wiki table */
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.wikitable {
+  background-color: #f8f9fa;
+  color: #222;
+  margin: 1em 0;
+  border: 1px solid #a2a9b1;
+  border-collapse: collapse;
+}
+
+table {
+  font-size: 100%;
+  border-spacing: 2px;
+}
+
+.mw-content-ltr {
+  direction: ltr;
+}
+
+.mw-body-content {
+  position: relative;
+  font-size: 0.875em;
+  line-height: 1.6;
+  z-index: 0;
+}
+
+.mw-body, .parsoid-body {
+  background-color: #ffffff;
+  color: #222222;
+  padding: 1em;
+  direction: ltr;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
