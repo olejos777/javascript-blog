@@ -9,7 +9,7 @@ const titleClickHandler = function (event) {
 
   event.preventDefault();                                                   //blokuje zmienianie się adresu po klikaniu w poszczególne linki
   const clickedElement = this;                                              //deklaracja stałej, która zwraca informację nt. klikniętego elementu (dzięki zastosowaniu 'this')
-  //console.log('Link was clicked!');                                         //wyświetlenie komunikatu w console.log po kliknięciu w link
+  console.log('This dla clickedElement to: ', clickedElement);                                         //wyświetlenie komunikatu w console.log po kliknięciu w link
 
 
   /* [DONE] remove class 'active' from all article links  */
@@ -21,7 +21,7 @@ const titleClickHandler = function (event) {
   /* [DONE] add class 'active' to the clicked link */
   // console.log('clickedElement (with plus): ' + clickedElement);         //wyświetla adres strony + klasę/href klikniętego linka
   clickedElement.classList.add('active');                                  //wywołanie funkcji, która dodaje aktywny link porzez dodanie klasy 'active' do klikniętego elementu (dzięki zastosowaniu obiekutu 'this')
-  //console.log('clickedElement:', clickedElement);
+  console.log('clickedElement:', clickedElement);
 
   /* [DONE] remove class 'active' from all articles */
   const activeArticles = document.querySelectorAll('.post.active');        //deklaracja stałej, która ma zwracać wszystkie określone selektory (w tym wypadku wszystkie aktywne artykuły wewnątrz div'a z klasą .post)
@@ -31,7 +31,7 @@ const titleClickHandler = function (event) {
 
   /* [DONE] get 'href' attribute from the clicked link */
   const articleSelector = clickedElement.getAttribute('href');             //deklaracja stałej, która ma zwracać wartość atrybutu #href dla klikniętego linka
-  //console.log('#href of clicked element is:', articleSelector);
+  console.log('#href of clickedElement is:', articleSelector);
 
 
   /* [DONE] find the correct article using the selector (value of 'href' attribute) */
@@ -46,17 +46,17 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 
-function generateTitleLinks() {
+function generateTitleLinks(customSelector = '') {
   /* [DONE] remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);           //deklaracja stałej, która zwraca 'ul' z klasą 'titles'
   titleList.innerHTML = '';                                                 //wywołanie funkcji, która usuwa listę z taga 'ul' z klasą 'titles'
-
+  
   let html = '';
 
   /* [DONE] for each article */
-  const articles = document.querySelectorAll(optArticleSelector);           //deklaracja stałej, która zwraca wszystkie selectory spełniające warunek 'optArticleSelector'
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);           //deklaracja stałej, która zwraca wszystkie selectory spełniające warunek 'optArticleSelector'
+
   for (let article of articles) {                                           //wywołanie pętli, która zwraca informacje dla pojedyńczych artykułów z listy artykułów zwróconej przez 'articles'
-    //console.log('szczegóły artykułu: ', article);
 
     /* [DONE] find the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML; //deklaracja stałej, która zwraca wszystkie tytuły (string/innerHTML z tagów o klasie .'post-title')
@@ -97,92 +97,107 @@ generateTitleLinks();                                                       //wy
 
 function generateTags () {
   
-  /* find all articles */
+  /* [DONE] find all articles */
   const articles = document.querySelectorAll(optArticleSelector); 
   
-  /* START LOOP: for every article: */
+  /* [DONE] START LOOP: for every article: */
   for (let article of articles) { 
     
-    /* find tags wrapper */
+    /* [DONE] find tags wrapper */
     const tagList = article.querySelector(optArticleTagsSelector);       //deklaracja stałej, która zwraca 'ul' z klasą ''
     let htmlTag = '';
 
-    /* make html variable with empty string */
+    /* [DONE] make html variable with empty string */
     
 
-    /* get tags from data-tags attribute */
+    /* [DONE] get tags from data-tags attribute */
     const articleTags = article.getAttribute('data-tags');
     
-    /* split tags into array */
+    /* [DONE] split tags into array */
     const articleTagsArray = articleTags.split(' ');
     
 
-    /* START LOOP: for each tag */
+    /* [DONE] START LOOP: for each tag */
     for (let tag of articleTagsArray){
  
-      /* generate HTML of the link */
+      /* [DONE] generate HTML of the link */
       const linkHTMLtag = '<li><a href="#tag-' + tag + '">' + tag + '   ' + '</a></li>';
      
-      /* add generated code to html variable */
+      /* [DONE] add generated code to html variable */
       htmlTag = htmlTag + linkHTMLtag;
       
-    /* END LOOP: for each tag */
+    /* [DONE] END LOOP: for each tag */
     }
     tagList.innerHTML = htmlTag;
     
-    /* insert HTML of all the links into the tags wrapper */
+    /* [DONE] insert HTML of all the links into the tags wrapper */
     const linksTag = document.querySelectorAll('.list a');
     
-    /* END LOOP: for every article: */
+    /* [DONE] END LOOP: for every article: */
   }
 }
 
 generateTags();
-const tagClickHandler = function (event){
-  /* prevent default action for this event */
+
+function tagClickHandler(event) {
+  /* [DONE] prevent default action for this event */
   event.preventDefault();
 
-  /* make new constant named "clickedElement" and give it the value of "this" */
-  const clickedElement = this;  
-  console.log(clickedElement); 
+  /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
+  const clickedElement2 = this; 
+  //console.log('clicked element to: ', clickedElement2);   
 
-  /* make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.getAttribute('href)');
+  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
+  const href = clickedElement2.getAttribute('href');
+  //console.log('href dla klikniętego elementu to: ', href);
 
-  /* make a new constant "tag" and extract tag from the "href" constant */
-  const tag = href.getAttribute('data-tags');
- 
+  /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
+  const tag = href.replace('#tag-', '');
+  //console.log('data-tags dla klikniętego elementu to: ', tag);
 
-  /* find all tag links with class active */
-  const activeLinks = document.querySelectorAll('.post.active');
-  console.log('tagi dla klikniętego elementu to: ', );
-
-  /* START LOOP: for each active tag link */
-
-    /* remove class active */
-
-  /* END LOOP: for each active tag link */
+  /* [DONE] find all tag links with class active */
+  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+  
+  //const allArticlesOfTag = document.querySelectorAll('a[href="' + href + '"]');
+    
+  /* [DONE] START LOOP: for each active tag link */
+  for (let activeTagLink of activeTagLinks) {
+  
+    /* [DONE] remove class active */
+    activeTagLink.classList.remove('active');
+  
+  /* [DONE] END LOOP: for each active tag link */
+  }
 
   /* find all tag links with "href" attribute equal to the "href" constant */
+  const tagLinks = document.querySelectorAll(href);
 
   /* START LOOP: for each found tag link */
+  for (let tagLink of tagLinks) {
 
     /* add class active */
+    tagLink.classList.add('active');
 
   /* END LOOP: for each found tag link */
-
+  }
   /* execute function "generateTitleLinks" with article selector as argument */
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags(){
   /* find all links to tags */
+  const tags = document.querySelectorAll('.list-horizontal a');
 
   /* START LOOP: for each link */
+  for (let tag of tags) {
 
     /* add tagClickHandler as event listener for that link */
+  tag.addEventListener('click', tagClickHandler);
 
   /* END LOOP: for each link */
+  }
 }
 
 addClickListenersToTags();
+
 
