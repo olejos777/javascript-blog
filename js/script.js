@@ -1,17 +1,10 @@
 'use strict';
 
-/*document.getElementById('test-button').addEventListener('click', function(){
-    const links = document.querySelectorAll('.titles a');
-    console.log('links:', links);
-  });*/
-
 const titleClickHandler = function (event) {
 
   event.preventDefault();                                                   //blokuje zmienianie się adresu po klikaniu w poszczególne linki
   const clickedElement = this;                                              //deklaracja stałej, która zwraca informację nt. klikniętego elementu (dzięki zastosowaniu 'this')
-  //console.log('This dla clickedElement to: ', clickedElement);                                         //wyświetlenie komunikatu w console.log po kliknięciu w link
-
-
+  
   /* [DONE] remove class 'active' from all article links  */
   const activeLinks = document.querySelectorAll('.titles a.active');        //deklaracja stałej, która ma zwracać wszystkie określone selektory (w tym wypadku wszystkie aktywne linki wewnątrz div'a z klasą .titles)
   for (let activeLink of activeLinks) {                                     //wywołanie funkcji, która usuwa wszystkie aktywne linki poprzez usunięcie klasy 'active' (z listy zwróconej przez 'const activeLinks')
@@ -19,10 +12,8 @@ const titleClickHandler = function (event) {
   }
 
   /* [DONE] add class 'active' to the clicked link */
-  // console.log('clickedElement (with plus): ' + clickedElement);         //wyświetla adres strony + klasę/href klikniętego linka
-  clickedElement.classList.add('active');                                  //wywołanie funkcji, która dodaje aktywny link porzez dodanie klasy 'active' do klikniętego elementu (dzięki zastosowaniu obiekutu 'this')
-  //console.log('clickedElement:', clickedElement);
-
+    clickedElement.classList.add('active');                                  //wywołanie funkcji, która dodaje aktywny link porzez dodanie klasy 'active' do klikniętego elementu (dzięki zastosowaniu obiekutu 'this')
+  
   /* [DONE] remove class 'active' from all articles */
   const activeArticles = document.querySelectorAll('.post.active');        //deklaracja stałej, która ma zwracać wszystkie określone selektory (w tym wypadku wszystkie aktywne artykuły wewnątrz div'a z klasą .post)
   for (let activeArticle of activeArticles) {
@@ -31,9 +22,7 @@ const titleClickHandler = function (event) {
 
   /* [DONE] get 'href' attribute from the clicked link */
   const articleSelector = clickedElement.getAttribute('href');             //deklaracja stałej, która ma zwracać wartość atrybutu #href dla klikniętego linka
-  //console.log('#href of clickedElement is:', articleSelector);
-
-
+  
   /* [DONE] find the correct article using the selector (value of 'href' attribute) */
   const articleTarget = articleSelector.replace('#', '');                  //deklaracja stałej, która zamienia ciąg znaków na inny zadeklarowany ciąg znaków (usunięcie '#' przed article)
 
@@ -51,6 +40,7 @@ const optArticleSelector = '.post',
   optCloudClassPrefix = 'tag-size-';
 
 function generateTitleLinks(customSelector = '') {
+  
   /* [DONE] remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);           //deklaracja stałej, która zwraca 'ul' z klasą 'titles'
   titleList.innerHTML = '';                                                 //wywołanie funkcji, która usuwa listę z taga 'ul' z klasą 'titles'
@@ -64,33 +54,20 @@ function generateTitleLinks(customSelector = '') {
 
     /* [DONE] find the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML; //deklaracja stałej, która zwraca wszystkie tytuły (string/innerHTML z tagów o klasie .'post-title')
-    //console.log('Tytuł artykułu: ', articleTitle);
-
+    
     /* [DONE] get the article id */
     const articleId = article.getAttribute('id');                           //deklaracja stałej, która zwraca wszystkie ID dla wszystkich tagów article (na podstawie 'cosnt articles')
-    //console.log('Article ID to: ', articleId);
-
+    
     /* [DONE] create HTML of the link */
     const linkHTML = '<li class="btn"><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';     //deklaracja stałej, która zwraca ciąg znaków  
-    //console.log (linkHTML);
-
+    
     /* [DONE] insert link into titleList */
-    //titleList.innerHTML = titleList.innerHTML + linkHTML;                 //deklaracja stałej, która 'wrzuca' ciąg znaków z powyższej stałej do 'innerHTML' stałej titleList
-
-
-    //function insertHTML() {
-    //const putHTML = document.querySelector(optTitleListSelector);         //deklaracja stałej, która zwraca 'ul' z klasą 'titles'
-    //putHTML.insertAdjacentHTML("beforeend", linkHTML);                    //funkcja, która dodajekod HTML do wybranego elementu
-    //console.log (putHTML);
+    
     html = html + linkHTML;
-    //console.log(html);
   }
+
   titleList.innerHTML = html;
-  //console.log (titleListHTML);
-
-  //insertHTML();
-  //}
-
+  
   const links = document.querySelectorAll('.titles a');
 
   for (let link of links) {
@@ -101,13 +78,7 @@ function generateTitleLinks(customSelector = '') {
 generateTitleLinks();                                                       //wykonanie generateTitleLinks:", generateTitleLinks);
 
 
-
-
-
-
-function generateTags() {
-
-  function calculateTagsParams(tags) {
+function calculateTagsParams(tags) {
 
   const params = { max: 0, min: 999999 };
 
@@ -118,17 +89,23 @@ function generateTags() {
     if (tags[tag] < params.min) {
       params.min = tags[tag];
     }
-    //console.log(tag + ' is used ' + tags[tag] + ' times');
   }
   return params;
 }
 
 function calculateTagClass (count, params) {
 
-  const classNumber = Math.floor(((count - params.min)/(params.max - params.min)) * optCloudClassCount + 1);
-  console.log('classNumber to: ', classNumber);
-  
+  const classNumber = Math.floor(((count - params.min)/(params.max - params.min)) * optCloudClassCount + 1); 
+
+  return classNumber;
 }
+
+
+
+
+function generateTags() {
+
+
   
 
   /* [DONE] create a new variable allTags with an empty object */
@@ -161,7 +138,7 @@ function calculateTagClass (count, params) {
       const linkHTMLtag = '<li><a href="#tag-' + tag + '">' + tag + '   ' + '</a></li>';
       
       /* [DONE] add generated code to html variable */
-      htmlTag = htmlTag + linkHTMLtag;
+      htmlTag = linkHTMLtag;
 
       /* [NEW] check if this link is NOT already in allTags */
       if (!allTags[tag]) {
@@ -171,13 +148,11 @@ function calculateTagClass (count, params) {
       } else {
         allTags[tag]++;
       }
-
       /* [DONE] END LOOP: for each tag */
     }
 
     /* [DONE] insert HTML of all the links into the tags wrapper */
     tagList.innerHTML = htmlTag;
-    //const linksTag = document.querySelectorAll('.list a');
 
     /* [DONE] END LOOP: for every article: */
   }
@@ -185,7 +160,6 @@ function calculateTagClass (count, params) {
   const tagList = document.querySelector('.tags');
 
   const tagsParams = calculateTagsParams(allTags);
-  //console.log('tagsParams:', tagsParams);
 
   /* [NEW] create variable for all links HTML code */
   let allTagsHTML = '';
@@ -193,21 +167,16 @@ function calculateTagClass (count, params) {
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let tag in allTags) {
 
-    const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
-    console.log('tagLinkHTML: ', tagLinkHTML); 
-
-    const linkHTMLtagsArray = '<li><a ' +'class="' /* + optCloudClassPrefix +  calculateTagClass(allTags[tag], tagsParams) */ + '" ' + 'href="#tag-' + tag + '">' + tag + '   ' + '</a></li>';
-    //console.log(linkHTMLtagsArray);
+    const linkHTMLtagsArray = '<li><a ' +'class="'  + optCloudClassPrefix +  calculateTagClass(allTags[tag], tagsParams) + '" ' + 'href="#tag-' + tag + '">' + tag + '   ' + '</a></li>';
     
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
     allTagsHTML += linkHTMLtagsArray + ' (' + allTags[tag] + ') ';
-    //console.log(allTagsHTML);
   }
 
-  /* [NEW] END LOOP: for each tag in allTags: */
+  /* [DONE] END LOOP: for each tag in allTags: */
 
-  /*[NEW] add HTML from allTagsHTML to tagList */
+  /*[DONE] add HTML from allTagsHTML to tagList */
   tagList.innerHTML = allTagsHTML;
 }
 
@@ -218,8 +187,7 @@ function tagClickHandler(event) {
   event.preventDefault();
 
   /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
-  const clickedElement2 = this;
-  //console.log('clicked element to: ', clickedElement2);   
+  const clickedElement2 = this;   
 
   /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
   const href = clickedElement2.getAttribute('href');
@@ -232,8 +200,6 @@ function tagClickHandler(event) {
   /* [DONE] find all tag links with class active */
   const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
 
-  //const allArticlesOfTag = document.querySelectorAll('a[href="' + href + '"]');
-
   /* [DONE] START LOOP: for each active tag link */
   for (let activeTagLink of activeTagLinks) {
 
@@ -243,16 +209,16 @@ function tagClickHandler(event) {
     /* [DONE] END LOOP: for each active tag link */
   }
 
-  /* find all tag links with "href" attribute equal to the "href" constant */
+  /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
   const tagLinks = document.querySelectorAll(href);
 
-  /* START LOOP: for each found tag link */
+  /* [DONE] START LOOP: for each found tag link */
   for (let tagLink of tagLinks) {
 
-    /* add class active */
+    /* [DONE] add class active */
     tagLink.classList.add('active');
 
-    /* END LOOP: for each found tag link */
+    /* [DONE] END LOOP: for each found tag link */
   }
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
@@ -289,24 +255,18 @@ function generateAuthors() {
 
     /* [DONE] make html variable with empty string */
     let htmlAuthor = authorName.innerHTML;
-    //console.log('htmlAuthor to: ',htmlAuthor);
 
     /* [DONE] get author from data-author attribute */
     const articleAuthor = article.getAttribute('data-author');
-    //console.log('articleAuthor to: ',articleAuthor);
 
     /* [DONE] generate HTML of the link */
     const linkHTMLauthor = '<a href="#author-' + articleAuthor + '">' + articleAuthor + '   ' + '</a>';
-    //console.log('linkHTMLauthor to: ',linkHTMLauthor);
 
     /* [DONE] add generated code to html variable */
-    htmlAuthor = htmlAuthor + linkHTMLauthor;
-    //console.log('htmlAuthor to: ',htmlAuthor);
+    htmlAuthor = linkHTMLauthor;
 
     /* [DONE] insert HTML of all the links into the authors wrapper */
     authorName.innerHTML = htmlAuthor;
-    //console.log('authorName.innerhtml to: ',authorName.innerHTML);
-
   }
 }
 
