@@ -120,6 +120,64 @@ body {
   }
 }
 
+.tags { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  a {
+    color: $color-light;
+    margin: 0 1px;
+      
+  }
+}
+
+.authors { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  a {
+    color: $color-light;
+    margin: 0 1px;
+      
+  }
+}
+
+  
+  .tag-size-1 {
+    font-size: 12px; 
+    display: flex;
+    align-items: center; 
+  }
+  
+
+  .tag-size-2 {
+    font-size: 16px; 
+    display: flex;
+    align-items: center; 
+  }
+
+  .tag-size-3 {
+    font-size: 18px;  
+    display: flex;
+    align-items: center;  
+  }
+
+  .tag-size-4 {
+    font-size: 22px; 
+    display: flex;
+    align-items: center;   
+  }
+
+  .tag-size-5 {
+    font-size: 26px;
+    display: flex;
+    align-items: center;   
+  }
+
+
+
 .btn {
   width: 200px;
   background-color: $color-primary;
@@ -148,6 +206,10 @@ body {
 .list-horizontal {
   li {
     display: inline-block;
+    margin: 0 8px;
+    a {
+      color: $color-light;
+    }
   }
 }
 

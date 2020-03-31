@@ -105,6 +105,78 @@ body {
   font-weight: bold;
 }
 
+.tags {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.tags a {
+  color: #fff;
+  margin: 0 1px;
+}
+
+.authors {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.authors a {
+  color: #fff;
+  margin: 0 1px;
+}
+
+.tag-size-1 {
+  font-size: 12px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.tag-size-2 {
+  font-size: 16px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.tag-size-3 {
+  font-size: 18px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.tag-size-4 {
+  font-size: 22px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.tag-size-5 {
+  font-size: 26px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
 .btn {
   width: 200px;
   background-color: green;
@@ -135,6 +207,11 @@ body {
 
 .list-horizontal li {
   display: inline-block;
+  margin: 0 8px;
+}
+
+.list-horizontal li a {
+  color: #fff;
 }
 
 /* Authors */
