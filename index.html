@@ -24,7 +24,7 @@
               </ul>
             </aside>
             <section class="posts">
-              <article class="post active" id="group-1" data-tags="Turkey Walles Switzerland Italy groupA" data-author="Zibi Boniek">
+              <article class="post active" id="Article-1" data-tags="Turkey Walles Switzerland Italy groupA" data-author="Zibi Boniek">
                 <h3 class="post-title">Group A</h3>
                 <p class="post-author"></p>
                 <div class="post-content container p-0">                  
@@ -225,7 +225,7 @@
                   </ul>
                 </div>
               </article>        
-              <article class="post" id="group-2" data-tags="Denmark Finland Belgium Russia Kopenhagen Sankt-Petersburg GroupB" data-author="Jacek Krzynówek">
+              <article class="post" id="article-2" data-tags="Denmark Finland Belgium Russia Kopenhagen Sankt-Petersburg GroupB" data-author="Jacek Krzynówek">
                 <h3 class="post-title">Group B</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -241,7 +241,7 @@
                   </ul>
                 </div>
               </article>        
-              <article class="post" id="group-3" data-tags="Netherlands Ukraine Austria Playoff GroupC" data-author="Robert Lewandowski">
+              <article class="post" id="article-3" data-tags="Netherlands Ukraine Austria Playoff GroupC" data-author="Robert Lewandowski">
                 <h3 class="post-title">Grupa C</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -256,7 +256,7 @@
                   </ul>
                 </div>
               </article>        
-              <article class="post" id="group-4" data-tags="England Croatia Playoff Czech-Republik GroupD" data-author="Kuba Błaszczykowski">
+              <article class="post" id="article-4" data-tags="England Croatia Playoff Czech-Republik GroupD" data-author="Kuba Błaszczykowski">
                 <h3 class="post-title">Grupa D</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -272,7 +272,7 @@
                   </ul>
                 </div>
               </article>
-              <article class="post" id="group-5" data-tags="Poland Playoff Sveden Espana GroupE" data-author="Grzegorz Krychowiak">
+              <article class="post" id="article-5" data-tags="Poland Playoff Sveden Espana GroupE" data-author="Grzegorz Krychowiak">
                 <h3 class="post-title">Grupa E</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -288,7 +288,7 @@
                   </ul>
                 </div>
               </article>        
-              <article class="post" id="group-6" data-tags="Playoff Portugal France Germany GroupF" data-author="Łukasz Piszczek">
+              <article class="post" id="article-6" data-tags="Playoff Portugal France Germany GroupF" data-author="Łukasz Piszczek">
                 <h3 class="post-title">Grupa F</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -304,7 +304,7 @@
                   </ul>
                 </div>
               </article>
-              <article class="post" id="group-7" data-tags="code news" data-author="Jerzy Brzęczek">
+              <article class="post" id="article-7" data-tags="code news" data-author="Jerzy Brzęczek">
                 <h3 class="post-title">Article 7</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -401,6 +401,26 @@
           </main>
         </div>
       </div>
+      <script id="template-article-link" type="text/x-handlebars-template">
+        <li class="btn"><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+      </script>
+      <script id="template-tag-link" type="text/x-handlebars-template">
+        <li><a href="#tag-{{ href }}">{{ href }}</a></li>
+      </script>
+      <script id="template-author-link" type="text/x-handlebars-template">
+        <a href="#author-{{ href }}">{{ href }}</a>
+      </script>
+      <script id="template-tagcloud-link" type="text/x-handlebars-template">
+        {{#each tags}}
+        <li class="tag-size-{{className}}"><a href="#tag-{{ tag }}">{{ tag }}</a></li>
+        {{/each}}
+      </script>
+      <script id="template-authorcloud-link" type="text/x-handlebars-template">
+        {{#each authors}}
+        <li class="tag-size-{{className}}"><a href="#author-{{ author }}">{{ author }}</a></li>
+        {{/each}}
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>               <!--  dlaczego jest to dodawane na końcu--> 
       <script src="js/script.js"></script>
    </body>
 </html>
