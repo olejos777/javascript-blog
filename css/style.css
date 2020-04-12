@@ -73,6 +73,10 @@ body {
   background-color: #219b21;
 }
 
+.posts .post-author a {
+  color: #fff;
+}
+
 .sidebar, .posts {
   margin-right: 10px;
   padding: 40px;
@@ -179,10 +183,12 @@ body {
 
 .btn {
   width: 200px;
+  height: 40px;
   background-color: green;
   border: 1px solid darkgreen;
   border-radius: 5%;
   margin: 10px auto 10px auto;
+  padding: 0;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -194,6 +200,9 @@ body {
 .btn a {
   color: #fff;
   font-weight: bold;
+  width: 200px;
+  height: 100%;
+  padding: 6px;
 }
 
 .btn:hover {

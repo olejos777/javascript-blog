@@ -84,6 +84,9 @@ body {
 .posts {
   flex: 2 0 0;
   background-color: $color-secondary;
+  .post-author a {
+    color: $color-light;
+  }
 }
 
 .sidebar, .posts {
@@ -180,10 +183,12 @@ body {
 
 .btn {
   width: 200px;
+  height: 40px;
   background-color: $color-primary;
   border: 1px solid $color-border;
   border-radius: 5%;
   margin: 10px auto 10px auto;
+  padding: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -191,6 +196,9 @@ body {
   a {
     color: $color-light;
     font-weight: bold;
+    width: 200px;
+    height: 100%;
+    padding: 6px;
   }
 }
 
